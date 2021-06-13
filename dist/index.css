@@ -6,7 +6,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: "Vazir", 
+    font-family: "Vazir"
 }
 
 ._1ceqH ._2fG9h {
@@ -61,10 +61,11 @@
 
 ._1ceqH ._1lB9c {
     display: flex;
-    justify-content: flex-end;
-    background: #d9deff;
+    justify-content: space-between;
+    background: #bd9f61;
     align-items: center;
     padding: 20px 20px;
+    color: #fff;
     border-radius: 3px 3px 0 0;
 }
 
@@ -112,7 +113,7 @@
 }
 
 ._1ceqH ._1Yplu ._1Pz2d {
-    border: 0;
+   border: 0;
     outline: 0;
     padding: 10px 20px;
     border-radius: 5px;
@@ -124,14 +125,13 @@
 }
 
 ._1ceqH ._1Yplu ._1Pz2d:hover {
-    background: #f0f2ff;
-    color:black
+   background: #f0f2ff;
+   color:black
 }
 
 ._1ceqH ._1Yplu ._2gd2_ {
     background: #f1f1f1;
     margin-left: 15px;
-    
 }
 
 ._1ceqH ._1Yplu ._2gd2_[disabled],
@@ -186,7 +186,6 @@
     color: #fff;
     margin-right: 15px;
     font-size: 20px;
-    letter-spacing: 1px;
 }
 
 ._1ceqH ._qxztz ._1bSom {

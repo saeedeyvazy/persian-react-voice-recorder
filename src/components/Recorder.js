@@ -74,24 +74,19 @@ class Recorder extends Component {
 			navigator.webkitGetUserMedia ||
 			navigator.mozGetUserMedia ||
 			navigator.msGetUserMedia
-		if (navigator.mediaDevices) {
-			const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-			if (this.props.mimeTypeToUseWhenRecording) {
-				this.mediaRecorder = new MediaRecorder(stream, {
-					mimeType: this.props.mimeTypeToUseWhenRecording,
-				})
-			} else {
-				this.mediaRecorder = new MediaRecorder(stream)
-			}
-			this.chunks = []
-			this.mediaRecorder.ondataavailable = (e) => {
-				if (e.data && e.data.size > 0) {
-					this.chunks.push(e.data)
-				}
-			}
+		const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+		if (this.props.mimeTypeToUseWhenRecording) {
+			this.mediaRecorder = new MediaRecorder(stream, {
+				mimeType: this.props.mimeTypeToUseWhenRecording,
+			})
 		} else {
-			this.setState({ medianotFound: true })
-			console.log('Media Decives will work only with SSL.....')
+			this.mediaRecorder = new MediaRecorder(stream)
+		}
+		this.chunks = []
+		this.mediaRecorder.ondataavailable = (e) => {
+			if (e.data && e.data.size > 0) {
+				this.chunks.push(e.data)
+			}
 		}
 	}
 

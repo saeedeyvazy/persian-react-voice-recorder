@@ -103,38 +103,25 @@ var Recorder = /*#__PURE__*/function (_Component) {
       var _this3 = this;
 
       navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-      var _temp2 = function () {
-        if (navigator.mediaDevices) {
-          return Promise.resolve(navigator.mediaDevices.getUserMedia({
-            audio: true
-          })).then(function (stream) {
-            if (_this3.props.mimeTypeToUseWhenRecording) {
-              _this3.mediaRecorder = new MediaRecorder(stream, {
-                mimeType: _this3.props.mimeTypeToUseWhenRecording
-              });
-            } else {
-              _this3.mediaRecorder = new MediaRecorder(stream);
-            }
-
-            _this3.chunks = [];
-
-            _this3.mediaRecorder.ondataavailable = function (e) {
-              if (e.data && e.data.size > 0) {
-                _this3.chunks.push(e.data);
-              }
-            };
+      return Promise.resolve(navigator.mediaDevices.getUserMedia({
+        audio: true
+      })).then(function (stream) {
+        if (_this3.props.mimeTypeToUseWhenRecording) {
+          _this3.mediaRecorder = new MediaRecorder(stream, {
+            mimeType: _this3.props.mimeTypeToUseWhenRecording
           });
         } else {
-          _this3.setState({
-            medianotFound: true
-          });
-
-          console.log('Media Decives will work only with SSL.....');
+          _this3.mediaRecorder = new MediaRecorder(stream);
         }
-      }();
 
-      return Promise.resolve(_temp2 && _temp2.then ? _temp2.then(function () {}) : void 0);
+        _this3.chunks = [];
+
+        _this3.mediaRecorder.ondataavailable = function (e) {
+          if (e.data && e.data.size > 0) {
+            _this3.chunks.push(e.data);
+          }
+        };
+      });
     } catch (e) {
       return Promise.reject(e);
     }
